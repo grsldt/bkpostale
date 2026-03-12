@@ -1,146 +1,134 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { footerLinks } from '../data/mockData';
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Youtube,
+  Headphones,
+  Search,
+  HelpCircle,
+  MessageSquare,
+  ChevronRight
+} from 'lucide-react';
 
 const Footer = () => {
+  const productSections = [
+    {
+      title: "Comptes et cartes",
+      links: ["Formule de compte", "Compte jeune 18-29 ans", "Compte mineur 12-17 ans", "Carte premium", "Transfert d'argent"]
+    },
+    {
+      title: "Épargne et placements",
+      links: ["Livret A", "Livret jeune", "LDDS", "Assurance vie", "Placements financiers", "ISR"]
+    },
+    {
+      title: "Crédits consommation",
+      links: ["Prêt personnel", "Prêt auto", "Prêt véhicule vert", "Prêt travaux", "Rachat de crédit", "Prêt étudiant"]
+    },
+    {
+      title: "Assurances",
+      links: ["Assurance auto", "Assurance habitation", "Assurance santé", "Assurance 2 roues", "Protection juridique", "Assurance scolaire"]
+    }
+  ];
+
   return (
-    <footer className="bg-white border-t border-gray-200 mt-20">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Comptes */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Comptes et cartes</h3>
-            <ul className="space-y-2">
-              {footerLinks.comptes.map((link, index) => (
-                <li key={index}>
-                  <Link to={link.url} className="text-sm text-gray-600 hover:text-blue-900 transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Épargne */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Épargne</h3>
-            <ul className="space-y-2">
-              {footerLinks.epargne.map((link, index) => (
-                <li key={index}>
-                  <Link to={link.url} className="text-sm text-gray-600 hover:text-blue-900 transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Crédits */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Crédits</h3>
-            <ul className="space-y-2">
-              {footerLinks.credits.map((link, index) => (
-                <li key={index}>
-                  <Link to={link.url} className="text-sm text-gray-600 hover:text-blue-900 transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Assurances */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Assurances</h3>
-            <ul className="space-y-2">
-              {footerLinks.assurances.map((link, index) => (
-                <li key={index}>
-                  <Link to={link.url} className="text-sm text-gray-600 hover:text-blue-900 transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Aide */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Aide & Contact</h3>
-            <ul className="space-y-2">
-              {footerLinks.aide.map((link, index) => (
-                <li key={index}>
-                  <Link to={link.url} className="text-sm text-gray-600 hover:text-blue-900 transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Social & Apps */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Suivez-nous :</span>
-              <div className="flex gap-3">
-                <a href="#" className="w-8 h-8 bg-gray-100 hover:bg-blue-900 rounded-full flex items-center justify-center transition-colors group">
-                  <span className="text-gray-600 group-hover:text-white text-xs">f</span>
-                </a>
-                <a href="#" className="w-8 h-8 bg-gray-100 hover:bg-blue-900 rounded-full flex items-center justify-center transition-colors group">
-                  <span className="text-gray-600 group-hover:text-white text-xs">tw</span>
-                </a>
-                <a href="#" className="w-8 h-8 bg-gray-100 hover:bg-blue-900 rounded-full flex items-center justify-center transition-colors group">
-                  <span className="text-gray-600 group-hover:text-white text-xs">in</span>
-                </a>
+    <footer className="w-full">
+      {/* 1. SECTION PRODUITS (BLANC) */}
+      <div className="bg-white border-t border-gray-200 py-12 px-6 md:px-12">
+        <div className="w-full lg:w-[80%] mx-auto">
+          <h2 className="text-xl text-[#003e62] text-center mb-12 font-medium">
+            Les produits préférés de nos clients
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {productSections.map((section, idx) => (
+              <div key={idx} className="space-y-4 text-center md:text-left">
+                <h3 className="text-[#003e62] font-bold text-base">{section.title}</h3>
+                <ul className="space-y-2 inline-block md:block">
+                  {section.links.map((link, i) => (
+                    <li key={i} className="flex items-center gap-2 group cursor-pointer justify-center md:justify-start">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#003e62] shrink-0" />
+                      <span className="text-[#003e62] text-[13px] group-hover:underline">{link}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Téléchargez l'app :</span>
-              <div className="flex gap-3">
-                <a href="#" className="px-4 py-2 bg-black text-white text-xs rounded-lg hover:bg-gray-800 transition-colors">
-                  App Store
-                </a>
-                <a href="#" className="px-4 py-2 bg-black text-white text-xs rounded-lg hover:bg-gray-800 transition-colors">
-                  Google Play
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="bg-gray-50 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <Link to="/mentions-legales" className="hover:text-blue-900 transition-colors">Mentions légales</Link>
-              <Link to="/donnees-personnelles" className="hover:text-blue-900 transition-colors">Données personnelles</Link>
-              <Link to="/cookies" className="hover:text-blue-900 transition-colors">Cookies</Link>
-              <Link to="/accessibilite" className="hover:text-blue-900 transition-colors">Accessibilité</Link>
-              <Link to="/plan-site" className="hover:text-blue-900 transition-colors">Plan du site</Link>
+      {/* 2. SECTION BLEUE (RÉASSURANCE & SOCIAL) */}
+      <div className="bg-[#003e62] text-white py-12 px-6 md:px-12">
+        <div className="w-full lg:w-[80%] mx-auto">
+          
+          {/* Logo + Réseaux Sociaux */}
+          <div className="flex flex-col items-left lg:flex-row lg:justify-between mb-8 gap-8 text-center">
+            <div className="flex items-center gap-3">
+              <img src="/lg-68721719ebce0-La-Banque-Postale.webp" alt="Logo" className="h-12 md:h-16 brightness-0 invert" />
+              <div className="h-10 w-[1px] bg-white/40 hidden lg:block mx-2"></div>
+              <span className="text-2xl font-light tracking-wide">Citoyenne</span>
             </div>
-            <div className="text-center md:text-right">
-              <p>© 2026 La Banque Postale - Tous droits réservés</p>
-            </div>
+            {/* Social Icons : taille ajustée pour mobile */}
+<div className="flex justify-center lg:justify-end items-center gap-6 md:gap-10 w-full">
+  <Facebook className="w-10 h-10 md:w-12 md:h-12 hover:opacity-70 cursor-pointer" />
+  <Instagram className="w-10 h-10 md:w-12 md:h-12 hover:opacity-70 cursor-pointer" />
+  <Linkedin className="w-10 h-10 md:w-12 md:h-12 hover:opacity-70 cursor-pointer" />
+  <Twitter className="w-10 h-10 md:w-12 md:h-12 hover:opacity-70 cursor-pointer" />
+  <Youtube className="w-10 h-10 md:w-12 md:h-12 hover:opacity-70 cursor-pointer" />
+</div>
           </div>
 
-          {/* Legal text */}
-          <div className="mt-6 text-xs text-gray-500 leading-relaxed">
-            <p className="mb-2">
-              <strong>Mentions légales :</strong> Prêteur : LA BANQUE POSTALE CONSUMER FINANCE - S.A. à Directoire et Conseil de Surveillance. Capital social 243 250 000 €. 
-              1 avenue François Mitterrand 93212 La Plaine Saint Denis Cedex. RCS Bobigny n°487 779 035.
+          {/* Description + Newsletter */}
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 mb-12 border-b border-white/20 pb-12">
+            <p className="text-[13px] leading-relaxed opacity-90 text-center lg:text-left max-w-full lg:max-w-[70%]">
+              Née en 2006, notre banque a grandi avec vous. Citoyenne, ouverte et accessible à tous,
+              nous revendiquons l’ambition d’accompagner nos 20 millions de clients avec des offres et
+              services performants, la modernité radicale de notre engagement citoyen et notre héritage postal.
+              Aujourd’hui notre établissement partage les rêves et les exigences de sa génération.
             </p>
-            <p className="mb-2">
-              Distributeur/Intermédiaire de crédit : LA BANQUE POSTALE - S.A. à Directoire et Conseil de Surveillance. 
-              Capital social 6 585 350 218 €. 115 rue de Sèvres, 75275 Paris Cedex 06. RCS Paris n°421100645. ORIAS n°07023424.
-            </p>
-            <p>
-              Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
-            </p>
+            <button className="w-full md:w-auto flex items-center justify-center gap-2 bg-transparent border border-white px-8 py-3 rounded-md text-sm font-bold hover:bg-white hover:text-[#003e62] transition-all whitespace-nowrap">
+              Abonnez-vous à la newsletter
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
+
+          {/* Liens d'assistance : Grid Responsive (Photo 1 et 2) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-center text-[11px] uppercase tracking-widest font-bold">
+            <a href="#" className="flex items-center justify-center md:justify-start lg:justify-center gap-3 py-6 px-4 hover:bg-white/5 border-b border-white/10 md:border-b-0 md:border-r md:border-white/20">
+              <Headphones className="w-5 h-5" />
+              Espace sourds et malentendants
+            </a>
+            <a href="#" className="flex items-center justify-center md:justify-start lg:justify-center gap-3 py-6 px-4 hover:bg-white/5 border-b border-white/10 md:border-b-0 lg:border-r lg:border-white/20">
+              <Search className="w-5 h-5" />
+              Recherche bureau de poste
+            </a>
+            <a href="#" className="flex items-center justify-center md:justify-start lg:justify-center gap-3 py-6 px-4 hover:bg-white/5 border-b border-white/10 md:border-b-0 md:border-r md:border-white/20">
+              <HelpCircle className="w-5 h-5" />
+              Foire aux questions
+            </a>
+            <a href="#" className="flex items-center justify-center md:justify-start lg:justify-center gap-3 py-6 px-4 hover:bg-white/5">
+              <MessageSquare className="w-5 h-5" />
+              Nous contacter
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      {/* 3. SECTION LÉGAL (GRIS) */}
+      <div className="bg-[#f2f2f2] py-8 px-6">
+        <div className="w-full lg:w-[80%] mx-auto text-center">
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-[11px] text-[#4a4a4a] font-medium mb-6">
+            <li className="hover:underline cursor-pointer">Mentions légales</li>
+            <li className="hover:underline cursor-pointer">Tarifs bancaires</li>
+            <li className="hover:underline cursor-pointer">Convention de compte</li>
+            <li className="hover:underline cursor-pointer">Protection des Données</li>
+            <li className="hover:underline cursor-pointer">Cookies</li>
+          </ul>
+          <p className="text-[10px] text-gray-400 opacity-70">
+            © 2026 La Banque Postale - Tous droits réservés
+          </p>
         </div>
       </div>
     </footer>

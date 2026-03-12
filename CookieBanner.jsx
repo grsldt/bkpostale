@@ -11,7 +11,7 @@ const CookieBanner = () => {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex items-start gap-6">
           <img 
-            src="/Screenshot from 2026-03-11 23-53-07.png" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/La_Banque_postale_logo_2010.svg/320px-La_Banque_postale_logo_2010.svg.png" 
             alt="La Banque Postale" 
             className="h-8 flex-shrink-0"
           />

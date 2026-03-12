@@ -1,132 +1,128 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, User, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, User, Menu, X, ChevronDown, Wallet } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
 
   const menuItems = [
-    { label: 'Comptes et cartes', path: '/comptes', hasDropdown: true },
-    { label: 'Épargne et placements', path: '/epargne', hasDropdown: true },
-    { label: 'Crédits', path: '/credits', hasDropdown: true },
-    { label: 'Assurances', path: '/assurances', hasDropdown: true },
-    { label: 'Conseils et actus', path: '/mag', hasDropdown: false },
-    { label: 'Solutions citoyennes', path: '/solutions', hasDropdown: true }
+    { label: 'Comptes et cartes', path: '/comptes' },
+    { label: 'Épargne et placements', path: '/epargne' },
+    { label: 'Crédits', path: '/credits' },
+    { label: 'Assurances', path: '/assurances' },
+    { label: 'Conseils et actus', path: '/mag' },
+    { label: 'Solutions citoyennes', path: '/solutions' }
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      {/* Top bar */}
-      <div className="bg-gray-50 border-b border-gray-200 py-2">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center gap-4">
-            <button className="text-gray-600 hover:text-gray-900 flex items-center gap-1 transition-colors">
-              Changer de site
-              <ChevronDown className="w-4 h-4" />
-            </button>
-            <span className="text-gray-600">Particuliers</span>
-          </div>
-          <div className="hidden md:flex items-center gap-4">
-            <Link to="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Contact
-            </Link>
-            <Link to="/agences" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Trouver une agence
-            </Link>
-          </div>
-        </div>
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 flex w-full">
+
+      {/* Logo */}
+      <div className="border-r border-gray-200 px-8 py-5 flex items-center justify-center min-w-[190px]">
+        <Link to="/">
+          <img
+            src="/Screenshot from 2026-03-11 23-53-07.png"
+            alt="logo"
+            className="h-16 w-auto object-contain"
+          />
+        </Link>
       </div>
 
-      {/* Main header */}
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex-shrink-0">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/La_Banque_postale_logo_2010.svg/320px-La_Banque_postale_logo_2010.svg.png" 
-              alt="La Banque Postale" 
-              className="h-8"
-            />
-          </Link>
+      <div className="flex-1 flex flex-col">
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 flex-1 justify-center">
-            {menuItems.map((item) => (
-              <div
-                key={item.path}
-                className="relative"
-                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.path)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  to={item.path}
-                  className="text-gray-700 hover:text-blue-900 font-medium text-sm transition-colors flex items-center gap-1"
-                >
-                  {item.label}
-                  {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
-                </Link>
-              </div>
-            ))}
-          </nav>
+        {/* Barre supérieure */}
+        <div className="flex justify-between items-center px-8 py-3 border-b border-gray-100">
 
-          {/* Actions */}
-          <div className="flex items-center gap-3">
-            <Button
-              className="hidden md:flex bg-[#7FA5CA] hover:bg-[#6B92B8] text-white px-6 py-2 text-sm rounded-md transition-colors"
-            >
+          <div className="flex flex-col leading-tight">
+            <span className="text-[11px] text-gray-400 uppercase tracking-widest">
+              Changer de site
+            </span>
+
+            <button className="text-[#002a5a] font-bold text-base flex items-center gap-1 group">
+              Particuliers
+              <ChevronDown className="w-5 h-5 text-blue-600 group-hover:rotate-180 transition-transform" />
+            </button>
+          </div>
+
+          {/* Boutons desktop */}
+          <div className="flex items-center gap-5">
+
+            <Button className="hidden md:flex bg-[#0071b3] hover:bg-[#005a8f] text-white px-8 py-4 rounded-full text-base font-bold transition-all gap-3 h-auto uppercase tracking-wide">
+              <Wallet className="w-6 h-6" />
               Ouvrir un compte
             </Button>
+
             <Link
               to="/connexion"
-              className="hidden md:flex items-center gap-2 text-gray-700 hover:text-blue-900 transition-colors text-sm"
+              className="hidden md:flex items-center gap-3 px-8 py-4 border border-gray-300 rounded-full text-[#002a5a] hover:bg-gray-50 transition-all text-base font-bold"
             >
-              <User className="w-5 h-5" />
+              <User className="w-6 h-6 text-blue-600" />
               Se connecter
             </Link>
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <Search className="w-5 h-5 text-gray-600" />
-            </button>
-            <button 
-              className="lg:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
-          <nav className="max-w-7xl mx-auto px-4 py-4 space-y-2">
+          </div>
+
+        </div>
+
+        {/* Navigation */}
+        <div className="flex justify-between items-center px-8 py-4">
+
+          <nav className="hidden lg:flex items-center gap-10">
             {menuItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className="block py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                className="text-[#002a5a] hover:text-blue-700 text-[15px] font-medium transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Recherche desktop */}
+          <button className="hidden lg:flex p-3 hover:bg-gray-100 rounded-full transition-colors">
+            <Search className="w-6 h-6 text-[#002a5a]" />
+          </button>
+
+        </div>
+
+        {/* Boutons mobile */}
+        <div className="flex justify-end gap-4 px-8 pb-4 lg:hidden">
+
+          <button className="p-4 hover:bg-gray-100 rounded-full transition-colors">
+            <Search className="w-8 h-8 text-[#002a5a]" />
+          </button>
+
+          <button
+            className="p-4 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+          </button>
+
+        </div>
+
+      </div>
+
+      {/* Menu mobile */}
+      {mobileMenuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-2xl lg:hidden">
+          <nav className="p-6 space-y-3">
+            {menuItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="block py-4 px-5 text-[#002a5a] text-base font-bold hover:bg-blue-50 rounded-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="pt-4 space-y-2">
-              <Button className="w-full bg-[#7FA5CA] hover:bg-[#6B92B8] text-white">
-                Ouvrir un compte
-              </Button>
-              <Link
-                to="/connexion"
-                className="block text-center py-2 text-gray-700 hover:text-blue-900"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Se connecter
-              </Link>
-            </div>
           </nav>
         </div>
       )}
+
     </header>
   );
 };
