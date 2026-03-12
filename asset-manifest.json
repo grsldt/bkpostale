@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bkpostale/static/css/main.b1ddf49f.css",
+    "main.js": "/bkpostale/static/js/main.5380a6e0.js",
+    "index.html": "/bkpostale/index.html",
+    "main.b1ddf49f.css.map": "/bkpostale/static/css/main.b1ddf49f.css.map",
+    "main.5380a6e0.js.map": "/bkpostale/static/js/main.5380a6e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1ddf49f.css",
+    "static/js/main.5380a6e0.js"
+  ]
+}
