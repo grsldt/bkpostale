@@ -1,8 +1,13 @@
-import React from 'react';
 import { Wrench, Clock, ShieldCheck } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import React, { useEffect } from 'react';
+
 
 const Maintenance = () => {
+    useEffect(() => {
+      document.title = "Maintenance - La Banque Postale";
+    }, []);
+  
   return (
     <div className="min-h-screen bg-[#f8f9fa] flex flex-col items-center justify-center px-4">
       <div className="max-w-2xl w-full bg-white shadow-xl rounded-lg overflow-hidden border-t-4 border-[#002a5a]">

