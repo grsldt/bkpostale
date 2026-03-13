@@ -7,51 +7,64 @@ const CookieBanner = () => {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50 animate-in slide-in-from-bottom">
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex items-start gap-6">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-[100] animate-in slide-in-from-bottom duration-500 overflow-y-auto max-h-[90vh]">
+      <div className="max-w-7xl mx-auto px-4 py-6 md:px-8">
+        
+        {/* Layout : Colonne sur mobile, Ligne sur Desktop */}
+        <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
           <img 
             src="/Screenshot from 2026-03-11 23-53-07.png" 
             alt="La Banque Postale" 
-            className="h-8 flex-shrink-0"
+            className="h-7 md:h-8 flex-shrink-0"
           />
+          
           <div className="flex-1">
-            <h3 className="text-base font-semibold text-gray-900 mb-3">
+            <h3 className="text-[15px] md:text-base font-semibold text-gray-900 mb-2">
               La Banque Postale <span className="font-normal">respecte votre vie privée</span>
             </h3>
-            <p className="text-sm text-gray-700 mb-4 leading-relaxed">
-              Lors de votre navigation sur notre site, nous et nos filiales utilisons certains cookies dont certains requièrent votre accord pour être déposés. Les finalités de ces cookies sont les suivantes :
-            </p>
-            <ul className="text-sm text-gray-700 space-y-1 mb-4">
-              <li><strong>• Mesure d'audience :</strong> établir des statistiques complémentaires sur l'utilisation de nos sites et applications mobiles.</li>
-              <li><strong>• Analyse et personnalisation :</strong> analyser les parcours clients et les contenus consultés.</li>
-              <li><strong>• Publicités :</strong> permettre à La Banque Postale et ses partenaires de vous adresser des publicités.</li>
-              <li><strong>• Vidéos :</strong> vous permettre de visionner directement sur notre site nos contenus multimédias.</li>
-            </ul>
-            <p className="text-sm text-gray-700 mb-4">
-              En cliquant sur « Uniquement autoriser les cookies essentiels » vous indiquez votre refus et seuls les cookies strictement nécessaires au bon fonctionnement du site seront déposés.
-              Vous pouvez modifier vos choix à tout moment ou obtenir plus d'informations via <a href="#" className="text-blue-700 underline">notre politique cookies</a>.
-            </p>
+            
+            <div className="text-xs md:text-sm text-gray-700 space-y-3 leading-relaxed">
+              <p>
+                Lors de votre navigation sur notre site, nous et nos filiales utilisons certains cookies dont certains requièrent votre accord pour être déposés. Les finalités de ces cookies sont les suivantes :
+              </p>
+              
+              {/* Grille pour les listes sur PC, simple liste sur mobile */}
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 ml-1">
+                <li><strong>• Mesure d'audience :</strong> statistiques complémentaires.</li>
+                <li><strong>• Analyse et personnalisation :</strong> analyse des parcours.</li>
+                <li><strong>• Publicités :</strong> publicités correspondantes.</li>
+                <li><strong>• Vidéos :</strong> contenus multimédias.</li>
+              </ul>
+              
+              <p className="hidden md:block text-[13px]">
+                En cliquant sur « Uniquement autoriser les cookies essentiels » vous indiquez votre refus. 
+                Vous pouvez modifier vos choix via <a href="#" className="text-blue-700 underline font-medium">notre politique cookies</a>.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-3 mt-6">
+
+        {/* SECTION BOUTONS : Empilés sur Mobile, Alignés sur Desktop */}
+        <div className="flex flex-col md:flex-row flex-wrap gap-3 mt-6">
           <Button
             onClick={() => setShow(false)}
-            className="bg-[#003D7A] hover:bg-[#002A5A] text-white px-8 py-3 rounded-md text-sm font-medium transition-colors"
+            className="w-full md:w-auto bg-[#003D7A] hover:bg-[#002A5A] text-white px-8 py-6 md:py-3 rounded-md text-xs md:text-sm font-bold md:font-medium transition-colors order-1"
           >
             TOUT ACCEPTER
           </Button>
+          
           <Button
             onClick={() => setShow(false)}
             variant="outline"
-            className="border-2 border-[#003D7A] text-[#003D7A] hover:bg-[#003D7A] hover:text-white px-8 py-3 rounded-md text-sm font-medium transition-colors"
+            className="w-full md:w-auto border-2 border-[#003D7A] text-[#003D7A] hover:bg-[#003D7A] hover:text-white px-8 py-6 md:py-3 rounded-md text-xs md:text-sm font-bold md:font-medium transition-colors order-2"
           >
             UNIQUEMENT AUTORISER LES COOKIES ESSENTIELS
           </Button>
+          
           <Button
             onClick={() => setShow(false)}
             variant="outline"
-            className="border-2 border-[#003D7A] text-[#003D7A] hover:bg-[#003D7A] hover:text-white px-8 py-3 rounded-md text-sm font-medium transition-colors"
+            className="w-full md:w-auto border-2 border-[#003D7A] text-[#003D7A] hover:bg-[#003D7A] hover:text-white px-8 py-6 md:py-3 rounded-md text-xs md:text-sm font-bold md:font-medium transition-colors order-3"
           >
             PERSONNALISER
           </Button>
